@@ -1,39 +1,36 @@
 package by.kazuilin.spring;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+
+import java.util.Arrays;
 
 @Component
 public class MusicPlayer {
-    private Music music;
-    private ClassicalMusic classicalMusic;
-    private RockMusic rockMusic;
 
 
-    //  @Autowired
+    private Music music1;
+    private Music music2;
+    private Music music3;
+@Autowired
+    public MusicPlayer(@Qualifier("Rock") Music music1, @Qualifier("Classic") Music music2, @Qualifier("Metal") Music music3) {
+        this.music1 = music1;
+        this.music2 = music2;
+        this.music3 = music3;
+    }
+//  @Autowired
     //  public MusicPlayer(Music music) {
     //      this.music = music;
     //  }
-    @Autowired
-    public MusicPlayer(ClassicalMusic classicalMusic, RockMusic rockMusic) { // второй вариант повесить две переменные
-        // на одну зависимость
-        this.classicalMusic = classicalMusic;
-        this.rockMusic = rockMusic;
-    }
+
 
     //   public void playMusic() {
     //       System.out.println("Playing: " + music.getSong());
     //   }
-    public void playMusic() {
-        System.out.println("Now playing: " + classicalMusic.getSong());
-        System.out.println("Now playing: " + rockMusic.getSong());
+    public String playMusic() {
+        return "Now playing: " + music1.getSong() + '\n' + "Playing after:  " + music2.getSong()+   " ,  " + music3.getSong();
     }
 
 
-
-    @Override
-    public String toString() {
-        return  rockMusic.getSong() + " , " +  classicalMusic.getSong()
-                ;
-    }
 }
