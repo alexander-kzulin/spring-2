@@ -2,7 +2,7 @@ package by.kazuilin.spring;
 
 import org.springframework.stereotype.Component;
 
-@Component("1")
+@Component("Classic")
 public class ClassicalMusic implements Music {
     private ClassicalMusic() {}
 
