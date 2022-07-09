@@ -2,17 +2,30 @@ package by.kazuilin.spring;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 
 @Component
 public class MusicPlayer {
+    @Value("${musicPlayer.name}")
+private String name;
+    @Value("${musicPlayer.volume}")
+private int volume;
 
+    public String getName() {
+        return name;
+    }
+
+    public int getVolume() {
+        return volume;
+    }
 
     private Music music1;
     private Music music2;
     private Music music3;
+
 @Autowired
     public MusicPlayer(@Qualifier("Rock") Music music1, @Qualifier("Classic") Music music2, @Qualifier("Metal") Music music3) {
         this.music1 = music1;
