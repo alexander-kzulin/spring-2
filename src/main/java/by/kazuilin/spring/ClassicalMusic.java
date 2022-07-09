@@ -17,10 +17,10 @@ public class ClassicalMusic implements Music {
 
     @PreDestroy
             public void doMyDestroy() {
-        System.out.println("Destroying... ");
+        System.out.println("Destroying...");
     }
     Random random = new Random();
-    private ClassicalMusic() {}
+    public ClassicalMusic() {}
 
     public static ClassicalMusic getClassicalMusic() {
         return new ClassicalMusic();
